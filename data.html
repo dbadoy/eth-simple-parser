@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <script src="./abi-decoder.js"></script>  
+
+    <style>
+        @font-face {
+            font-family: "DungGeunMo";
+            src: url('./DungGeunMo_WebFont/DungGeunMo.woff');
+        }
+        body {
+            font-family: "DungGeunMo";
+        }
+    </style>
+
+    <script>
+        function parseDataWithAbi() {
+            let json = document.getElementById('abi').value;
+            try {
+                json = JSON.parse(json);
+            } catch (error) {
+                alert("incorrect JSON format.");
+                document.getElementById('abi').value = "";
+            }
+
+            let data = document.getElementById('data').value;
+            abiDecoder.addABI(json);
+
+            try {
+                document.getElementById('result_txt').innerHTML = JSON.stringify(abiDecoder.decodeMethod(data), undefined, 2);                
+            } catch (error) {
+                alert(error.code);
+            }
+        }
+    </script>
+
+    <title>Document</title>
+</head>
+<body style="background-color:slategray">
+    <div style="text-align: center;">
+        <h1 style="font-size: 58px;">data with abi</h1>
+        <p style="font-size: 28px;"><a href="./index.html" style="color: blue;">home</a></p>
+
+        <div style="margin-left: 150px;">
+            <div style="float: left;">
+                <p>abi</p>
+                <textarea id="abi" style="resize: none; width: 350px; height: 500px; border-radius: 3px;"></textarea>
+            </div>
+            <div style="float: left;">
+                <p>data</p>
+                <textarea id="data" style="resize: none; width: 350px; height: 500px; margin-left: 30px; border-radius: 3px;"></textarea>
+                <button onclick="parseDataWithAbi()">parse</button>
+            </div>
+
+            <div id="result" style="float: left;">
+                <p></p><br><br>
+                <textarea id="result_txt" style="resize: none; width: 350px; height: 500px; margin-left: 80px; border-radius: 3px;"></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
