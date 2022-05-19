@@ -12,7 +12,7 @@
         body {
             font-family: "DungGeunMo";
         }
-</style>
+    </style>
 
     <title>eth-simple-parser</title>
 </head>
@@ -27,19 +27,6 @@
     <br><br><br><br><br><br><br><br><br><br>
     <div style="text-align: center; margin-bottom: 800px;">
         <a href="https://github.com/dbadoy"><img src="./git_logo.png" style="width: 120px"><br><a style="font-size: 25px;">@dbadoy</a></a> 
-        <br>
-        <a id="hit">1</a>
-
-        <script>
-            console.log(localStorage.getItem('cnt'))
-            if(localStorage.getItem('cnt') === undefined) {
-                localStorage.setItem('cnt', 0);
-            }
-            let totalHit = localStorage.getItem('cnt');
-            localStorage.setItem('cnt',  Number(totalHit) + 1);
-            document.getElementById('hit').innerHTML = localStorage.getItem('cnt');
-        </script>
-
     </div>
 </body>
 </html>
